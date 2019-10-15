@@ -27,9 +27,7 @@ app.get('', function(req, res) {
 app.get('/weather', function(req, res) {
   //console.log(res.query)
 	if (!req.query.search) {
-	    res.send({
-	      error: 'Debes enviar una Ciudad'
-	    })
+	    res.send('ERROR: Debes enviar una Ciudad')
 	}
   // Hardcodeado
   // res.send({
@@ -37,16 +35,12 @@ app.get('/weather', function(req, res) {
   // })
 	weather.geocode( req.query.search, function(error, response) {
 	  	if (error) {
-		    return res.send({
-		      error: error
-		    })
+		    return res.send(error)
 	  	}
 
     	weather.forecast(response.longitude, response.latitude, function(error, response) {
 		    if (error) {
-		        return res.send({
-		          error: error
-		        })
+		        return res.send(error)
 		    }
 		    res.send(response)
     	})
