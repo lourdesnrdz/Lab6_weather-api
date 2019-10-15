@@ -1,5 +1,5 @@
 {
-  "name": "weather-app",
+  "name": "Lab6_weather-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,9 +9,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lourdesnrdz/Lab6_weather-api.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lourdesnrdz/Lab6_weather-api/issues"
+  },
+  "homepage": "https://github.com/lourdesnrdz/Lab6_weather-api#readme"
 }

@@ -1,10 +1,19 @@
 
-const credentials = require('./credentials.js')
+// const credentials = require('./credentials.js')
 
 const request = require('request')
 
+if(process.env.NODE_ENV === 'production') {
+	var secretkey = process.env.DARK_SKY_SECRET_KEY 
+	var accesstoken = process.env.MAPBOX_TOKEN
+} else {
+	const credentials = require('./credentials.js')
+	var secretkey = credentials.DARK_SKY_SECRET_KEY 
+	var accesstoken = credentials.MAPBOX_TOKEN
+}
+
 const forecast = function (longitude, latitude, callback) {
-	const url = 'https://api.darksky.net/forecast/' + credentials.DARK_SKY_SECRET_KEY + '/' + latitude + ',' + longitude + '?&units=si'
+	const url = 'https://api.darksky.net/forecast/' + secretkey + '/' + latitude + ',' + longitude + '?&units=si'
 
 	request({url, json:true}, function(error, response) {
 
@@ -44,7 +53,7 @@ const forecast = function (longitude, latitude, callback) {
 }
 
 const geocode = function(ciudad, callback) {
-	const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + ciudad + '.json?access_token=' + credentials.MAPBOX_TOKEN
+	const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + ciudad + '.json?access_token=' + accesstoken
 	
 	request({url, json:true}, function(error, response) {
  
